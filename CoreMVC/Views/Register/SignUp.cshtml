@@ -1,0 +1,45 @@
+﻿@model EntityLayer.Concrete.Writer
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Register Now</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                @using (Html.BeginForm("SignUp", "Register", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            @Html.Label("Kullanıcı Adı")
+                            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                        </div>
+                        <br />
+                        <div class="col-md-6 mb-3">
+                            @Html.Label("Mail")
+                            @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterMail)
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.Label("Şifre")
+                            @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterPassword)
+                        </div>
+                        <br />
+                        <div class="col-md-6 mb-3">
+                            @Html.Label("Şehir")
+                            @Html.DropDownListFor(x => x.CityID,(List<SelectListItem>)ViewBag.Combo,null,
+                           new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.Blog
+@{
+    ViewData["Title"] = "BlogAdd";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+{
+    @Html.Label("Blog Başlığı")
+    @Html.TextBoxFor(x => x.BlogTittle, new { @class = "form-control", @style = "width : 400px" })
+    @Html.ValidationMessageFor(x => x.BlogTittle)
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.combo,
+    new { @class = "form-control", @style = "width : 400px" })
+    <br />
+    @Html.Label("İçerik")
+    @Html.TextAreaFor(x => x.BlogContent, 10, 3, new { @class = "form-control", @style = "width : 400px" })
+    @Html.ValidationMessageFor(x => x.BlogContent)
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+}
+@section Scripts{ 
+    <partial name="_ValidatorPartial"/>
+}

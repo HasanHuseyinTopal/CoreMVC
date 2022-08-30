@@ -1,0 +1,26 @@
+﻿@model List<EntityLayer.Concrete.Comment>
+
+
+<div class="comment-top">
+    <h4>Yorumlar</h4>
+    @foreach (var item in Model)
+    {
+        @if (!string.IsNullOrWhiteSpace(item.CommentContent))
+        {
+            <div class="media">
+                <img src="/web/images/t1.jpg" alt="" class="img-fluid" />
+                <div class="media-body">
+
+                    <h5 class="mt-0">@item.CommentUserName</h5>
+                    <p>
+                        @item.CommentContent
+                    </p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h1>Henüz Yorum Yok</h1>
+        }
+    }
+</div>

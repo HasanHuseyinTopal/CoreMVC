@@ -1,0 +1,56 @@
+﻿@model EntityLayer.Concrete.Writer
+@{
+    ViewData["Title"] = "WriterEditProfile";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+@using (Html.BeginForm("WriterEditProfile", "Writer", FormMethod.Post))
+{
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yazar Profil Bilgileri Düzenleme</h4>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <input type="hidden" class="form-control" asp-for="WriterID" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Name</label>
+                    <input type="text" class="form-control" asp-for="WriterName" id="exampleInputName1" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Email address</label>
+                    <input type="email" class="form-control" asp-for="WriterMail" id="exampleInputEmail3" placeholder="Email">
+                    @Html.ValidationMessageFor(x => x.WriterMail)
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Password</label>
+                    <input type="password" class="form-control" asp-for="WriterPassword" id="exampleInputPassword4" placeholder="Password">
+                    @Html.ValidationMessageFor(x => x.WriterPassword)
+                </div>
+                <div class="form-group">
+                    @Html.DropDownListFor(x => x.CityID, (List<SelectListItem>)ViewBag.Combo,
+                   new { @class = "form-control", @style = "width:400px" })
+                </div>
+                @*<div class="form-group">
+            <label>Yazar Görsel</label>
+            <input type="file" name="img[]" class="file-upload-default">
+            <div class="input-group col-xs-12">
+                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                <span class="input-group-append">
+                    <button class="file-upload-browse btn btn-gradient-primary" type="button">Resim Seç</button>
+                </span>
+            </div>
+        </div>*@
+                <div class="form-group">
+                    <label for="exampleTextarea1">Yazar Hakkında</label>
+                    <textarea class="form-control" asp-for="WriterAbout" id="exampleTextarea1" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+}
+
